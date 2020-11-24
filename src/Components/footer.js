@@ -6,9 +6,9 @@ function footer() {
         <>
             <section class="footer">
                 <ul class="sci">
-                    <li><a href="#"><img src="img/facebook.png" alt="" /></a></li>
-                    <li><a href="#"><img src="img/twitter.png" alt="" /></a></li>
-                    <li><a href="#"><img src="img/instagram.png" alt="" /></a></li>
+                    <li><a href="/"><img src="img/facebook.png" alt="/" /></a></li>
+                    <li><a href="/"><img src="img/twitter.png" alt="/" /></a></li>
+                    <li><a href="/"><img src="img/instagram.png" alt="/" /></a></li>
                 </ul>
                 <h4>Copyright &copy;2020</h4>
             </section>

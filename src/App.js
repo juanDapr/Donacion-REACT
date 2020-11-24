@@ -34,7 +34,7 @@ function App() {
         <Route path="/hospital" exact component={Hospital}></Route>
         <Route path="/registroHospital" exact component={registroHospital}></Route>
         <Route path="/incentivos" exact component={incentivo}></Route>
-        <Route path="/registroIncentivos" exact component={registroIncentivo}></Route>
+        <Route path="/registroIncentivo" exact component={registroIncentivo}></Route>
         <Route path="/Menu" exact component={menu}></Route>
       </Switch>
       <Footer/>
