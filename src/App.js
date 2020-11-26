@@ -16,9 +16,11 @@ import registroIncentivo from './Components/Pages/registroIncentivo';
 import incentivo from './Components/Pages/incentivo';
 import menu from './Components/Pages/menu';
 import registroUsuario from './Components/Pages/registroUsuario';
+import preguntas from './Components/Pages/preguntas';
 
 
 function App() {
+ 
   return (
     <Router>
       <Navbar />
@@ -26,8 +28,10 @@ function App() {
         <Route path="/" exact component={Home}></Route>
         <Route path="/rh" exact component={RH}></Route>
         <Route path="/requisitos" exact component={Requisitos}></Route>
+        <Route path="/preguntas" exact component={preguntas}></Route>
         <Route path="/about" exact component={About}></Route>
-        <Route path="/login" exact component={Login}></Route>
+        <Route path="/login" component={() => {window.location.href= "http://127.0.0.1:8000/login"}}></Route>
+        <Route path="/datos" component={() => {window.location.href= "http://127.0.0.1:8000/datos"}}></Route>
         <Route path="/registroUsuario" exact component={registroUsuario}></Route>
         <Route path="/campanas" exact component={Campana}></Route>
         <Route path="/registroCampana" exact component={RegCampana}></Route>

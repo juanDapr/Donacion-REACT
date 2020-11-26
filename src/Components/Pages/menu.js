@@ -3,6 +3,7 @@ import './style.css'
 import './bootstrap.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
+import { Link } from 'react-router-dom'
 
 
 
@@ -40,6 +41,7 @@ function menu() {
                             </div>
                         </SwiperSlide>
                         <SwiperSlide>
+                        <Link to="/datos">
                             <div class="card">
                                 <div class="layer"></div>
                                 <div class="content">
@@ -47,10 +49,11 @@ function menu() {
                                         <img src="img/certificado.png" width="150px" alt="" />
                                     </div>
                                     <div class="details">
-                                        <h2>Certificado de Donante</h2>
+                                        <h2>Datos Usuario</h2>
                                     </div>
                                 </div>
                             </div>
+                            </Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div class="card">
@@ -94,6 +97,7 @@ function menu() {
                                 </div>
                         </SwiperSlide>
                         <SwiperSlide>
+                            <Link to="/preguntas">
                         <div class="card">
                                     <div class="layer"></div>
                                     <div class="content">
@@ -105,6 +109,7 @@ function menu() {
                                         </div>
                                     </div>
                                 </div>
+                                </Link>
                         </SwiperSlide>
 
                     </Swiper>

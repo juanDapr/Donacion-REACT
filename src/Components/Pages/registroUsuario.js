@@ -1,26 +1,48 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './style.css'
 import './bootstrap.css'
-function registroUsuario() {
-
-    window.addEventListener('load', function () {
-
-        document.getElementById('fecha').type = 'text';
-        document.getElementById('fecha').style = 'border-bottom: 2px  solid #f01706; ';
-        document.getElementById('fecha').addEventListener('blur', function () {
-            document.getElementById('fecha').style = 'border-bottom: 2px  solid #f01706; ';
-            document.getElementById('fecha').type = 'text';
-
-
-        });
-
-        document.getElementById('fecha').addEventListener('focus', function () {
-
-            document.getElementById('fecha').type = 'date'
-
-        });
-
+import axios from 'axios';
+import global from './global';
+class registroUsuario extends Component {
+    nombreRef = React.createRef();
+    apellidoref = React.createRef();
+    usuarioref=React.createRef();
+    correoRef = React.createRef();
+    passwordref = React.createRef();
+   
+    
+    state={
+        usuarios:null
+    }
+    recibirformulario=(e)=>{
+        e.preventDefault();
+        
+    let usuario={
+        first_name:this.nombreRef.current.value,
+        last_name:this.apellidoref.current.value,
+        username:this.usuarioref.current.value,
+        email:this.correoRef.current.value,
+        password: this.passwordref.current.value,
+        
+       
+    }
+    this.setState({
+        usuarios:usuario
     })
+    axios.post(global.urlUsuario, this.state.usuarios).then(res=>{
+        if(res.data){
+        
+            this.props.history.push('/login');
+        }
+        else{
+           console.log(res) 
+        }
+    })
+    
+    }
+
+
+    render(){
     return (
         <>
         <div class="container2_login">
@@ -33,37 +55,18 @@ function registroUsuario() {
                 
             </span>
             
-            <form action="" method="post">
+            <form action="" method="post" onSubmit={this.recibirformulario}>
                 
                 <div class="row100">
                     <div class="col">
                         <div class="inputBox">
-                            <input type="text" id="nombre" name="nombre" required="required" placeholder="Nombre" data-constraints="@Required"/> 
+                            <input type="text"  ref={this.nombreRef} id="nombre" name="nombre" required="required" placeholder="Nombre" data-constraints="@Required"/> 
                             <span class="line"></span>
                         </div>
                     </div>
                     <div class="col">
                         <div class="inputBox">
-                            <input type="text" id="apellido" name="apellido"  required="required" placeholder="Apellido" data-constraints="@Required"/>
-                            <span class="line"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row100">
-                    <div class="col">
-                        <div class="inputBox">
-                            <select id="documento" name="documento" data-constraints="@Required">
-                                <option value="">Documento de indentificacion</option>
-                                <option value="CC">CC</option>
-                                <option value="Pasaporte">Pasaporte</option>
-                                <option value="TI">TI</option>
-                            </select>
-                            <span class="line"></span>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="inputBox">
-                            <input type="number" id="numDocumento" name="numDocumento"  required="required" placeholder="N° indentificacion" data-constraints="@Required"/>
+                            <input type="text"  ref={this.apellidoref} id="apellido" name="apellido"  required="required" placeholder="Apellido" data-constraints="@Required"/>
                             <span class="line"></span>
                         </div>
                     </div>
@@ -71,80 +74,24 @@ function registroUsuario() {
                 <div class="row100">
                     <div class="col">
                         <div class="inputBox">
-                            <select id="grupo" name="grupo" data-constraints="@Required">
-                                <option value="">Grupo sanguineo</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="O">O</option>
-                                <option value="O">AB</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col">
-
-                        <div class="inputBox">
-
-                            <select id="rh" name="rh" data-constraints="@Required">
-                                <option value="RH">RH</option>
-                                <option value="+">+</option>
-                                <option value="-">-</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row100">
-                    <div class="col">
-                        <div class="inputBox">
-                            <input id="fecha" name="fecha"  class="input100" type="date" 
-                                placeholder="Fecha de Nacimiento del Titular" data-constraints="@Required"/>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="inputBox">
-
-                            <select class="myselect" id="genero" name="genero" data-constraints="@Required">
-                                <option value="">Genero</option>
-                                <option value="M">M</option>
-                                <option value="F">F</option>
-                                <option value="Otro">Otro</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row100">
-                    <div class="col">
-                        <div class="inputBox">
-                            <input id="ciudad" name="ciudad"  type="text" required="required" placeholder="Ciudad donde vives" data-constraints="@Required"/>
-
+                        <input type="text"  ref={this.usuarioref} required="required" placeholder="Usuario" data-constraints="@Required"/> 
                             <span class="line"></span>
                         </div>
                     </div>
                     <div class="col">
-
                         <div class="inputBox">
-                            <input type="number" id="celular" name="celular"  required="required" placeholder="Celular" data-constraints="@Required"/>
-
-                            <span class="line"></span>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row100">
-                    <div class="col">
-                        <div class="inputBox">
-                            <input type="email" id="correo" name="correo"  required="required" placeholder="Correo electronico" data-constraints="@Required"/>
-
+                            <input type="email" ref={this.correoRef} id=""   required="required" placeholder="Email" data-constraints="@Required"/>
                             <span class="line"></span>
                         </div>
                     </div>
-
                 </div>
+                
+                            
+            
                 <div class="row100">
                     <div class="col">
                         <div class="inputBox">
-                            <input type="password" id="contrasena" name="contrasena"  required="required" placeholder="contrasena" data-constraints="@Required"/>
+                            <input type="password"  ref={this.passwordref} id="contrasena" name="contrasena"  required="required" placeholder="contrasena" data-constraints="@Required"/>
 
                             <span class="line"></span>
                         </div>
@@ -175,6 +122,6 @@ function registroUsuario() {
     
         </>
     )
-}
+}}
 
 export default registroUsuario

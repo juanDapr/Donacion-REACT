@@ -23,7 +23,7 @@ function Navbar() {
                 <div className= "navbar-container container_navbar">
                     
                     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-                        <BiDonateBlood></BiDonateBlood>
+                        
                         Bloove
                     </Link>
                     <div className="menu-icon" onClick={handleCLick}>
@@ -32,7 +32,7 @@ function Navbar() {
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className= 'nav-item'>
                             <Link to='/' className= 'nav-links' onClick={closeMobileMenu}>
-                            <AiFillHome></AiFillHome>
+                            
                                 Home
                             </Link>
                         </li>
